@@ -1,5 +1,6 @@
 # projeto1-python-dsoo
 Projeto conjunto para a disciplina de DSOOI (Desenvolvimento de Sistemas Orientados a Objeto I)
+
 Discentes: Gabriel Gomes de Souza / Victoria Hollerbach Buratto.
 
 Sistema de Gerenciamento de Viagens em Grupo
@@ -11,9 +12,10 @@ O sistema deve permitir o cadastro de participantes, planejamento de itinerário
 Tecnologias Utilizadas:
 UML: Draw.io
 Linguagem: Python
+Git: GitHub
 
 Funiconalidades:
-Cadastro de viajantes e de grupos de viagnes
-cadastro de empresas de viagens
-Criação de itinerarios de viagem
+Cadastro de viajantes e de grupos de viagens
+Cadastro de empresas de viagens
+Criação de itinerarios de viagens
 Controle financeiro de viagens

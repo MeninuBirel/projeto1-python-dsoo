@@ -19,3 +19,14 @@ Cadastro de viajantes e de grupos de viagens
 Cadastro de empresas de viagens
 Criação de itinerarios de viagens
 Controle financeiro de viagens
+
+Classes:
+Viagem
+Viajante
+Local - Origem e Destino
+Itinerario
+Empresa
+Passeios Turisticos
+Pagamento
+Pix / Dinheiro / Cartão
+Compra Passagem

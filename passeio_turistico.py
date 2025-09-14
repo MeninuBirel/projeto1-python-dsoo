@@ -1,13 +1,16 @@
 from pessoa import Pessoa
 
 class PasseioTuristico:
-    def __init__(self, cidade: str, atracao_turistica: str, horario_inc: int, horario_fim: int, valor_passeio: float, pessoa: Pessoa):
+    def __init__(self, dia: str, cidade: str, atracao_turistica: str, horario_inc: int, horario_fim: int, valor_passeio: float, pessoa: Pessoa):
+        self.__dia = None
         self.__cidade = None
         self.__atracao_turistica = None
         self.__horario_inc = None
         self.__horario_fim = None
         self.__valor_passeio = None
         self.__pessoas_no_passeio = []
+        if is isinstance(dia, str):
+            self.__dia = dia
         if isinstance(cidade, str):
             self.__cidade = cidade
         if isinstance(atracao_turistica, str):
@@ -18,8 +21,17 @@ class PasseioTuristico:
             self.__horario_fim = horario_fim
         if isinstance(valor_passeio, float):
             self.__valor_passeio = valor_passeio
-        
+            
+    @property
+    def dia(self):
+        return self.__dia
+    
+    @dia.setter
+    def dia(self, dia: str):
+        if isinstance(dia, str):
+            self.__dia = dia
 
+    
     @property
     def cidade(self):
         return self.__cidade
@@ -75,5 +87,11 @@ class PasseioTuristico:
         return self.__pessoas_no_passeio
 
     def incluir_pessoa_no_passeio(self, pessoa: Pessoa):
+        if isinstance(pessoa, Pessoa):
+            if pessoa not in self.__pessoas_no_passeio:
+                self.__pessoas_no_passeio.append(pessoa)
 
     def excluir_pessoa_no_passeio(self, pessoa: Pessoa):
+        if isinstance(pessoa, Pessoa):
+            if pessoa in self.__pessoas_no_passeio:
+                self.__pessoas_no_passeio.remove(pessoa)

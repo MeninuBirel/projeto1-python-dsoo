@@ -48,8 +48,13 @@ class Pessoa:
     
     
     @property
+    def idade(self):
+        return self.__idade
 
     @idade.setter
+    def idade(self, idade: int):
+        if isinstance(idade, int):
+            self.__idade = idade
 
 
     def valor_falta_pagar(self):

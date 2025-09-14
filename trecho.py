@@ -1,3 +1,5 @@
+from transporte import Transporte
+
 class Trecho:
     def __init__(self, data: str, cidade_origem: str, pais_origem: str, cidade_destino: str, pais_destino: str, transporte: Transporte):
         self.__data = None

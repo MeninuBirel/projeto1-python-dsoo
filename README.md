@@ -24,7 +24,7 @@ Classes:
 Viagem;
 Viajante;
 Local - Origem e Destino;
-Itinerario;
+Controlador de relatorios;
 Empresa;
 Passeios Turisticos;
 Pagamento;

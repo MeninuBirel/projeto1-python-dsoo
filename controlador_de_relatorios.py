@@ -1,26 +1,6 @@
 from collections import Counter
 from typing import List, Dict
 
-class Local:
-    def __init__(self, cidade: str, pais: str, valor: float):
-        self.cidade = cidade
-        self.pais = pais
-        self.valor = valor
-
-class PasseioTuristico:
-    def __init__(self, atracao_turistica: str, valor: float):
-        self.atracao_turistica = atracao_turistica
-        self.valor = valor
-
-class Itinerario:
-    def __init__(self):
-        self.dia_a_dia = {}
-
-class Viagem:
-    def __init__(self):
-        self.locais: List[Local] = []
-        self.itinerario: Itinerario = None
-
 class ControladorDeRelatorios:
     def __init__(self, viagens: List[Viagem], locais: List[Local], passeios: List[PasseioTuristico]):
         self._viagens = viagens

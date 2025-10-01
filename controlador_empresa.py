@@ -45,4 +45,4 @@ class ControladorEmpresas:
             elif opcao == 0:
                 self.retornar()
             else:
-                self.tela.mostra_mensagem("Opção inválida!")
+                self.tela_empresa.mostra_mensagem("Opção inválida!")

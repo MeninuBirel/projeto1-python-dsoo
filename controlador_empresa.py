@@ -2,12 +2,13 @@ from limite.tela_empresa import TelaEmpresa
 from entidade.empresa import Empresa
 
 
-class ControladorEmpresa:
-    def __init__(self):
-        self.tela = TelaEmpresa()
-        self.empresas = []
+class ControladorEmpresas:
+    def __init__(self, controlador_sistema):
+        self.__tela_empresa = TelaEmpresa()
+        self.__empresas = []
+        self.__controlador_sistema = controlador_sistema
 
-    def cadastrar_empresa(self):
+    def cadastrar_empresa(self): #verificar se não há empresas repetidas!!!!
         dados = self.tela.pega_dados_empresa()
         try:
             nova_empresa = Empresa(dados["nome"], dados["cnpj"], dados["telefone"])

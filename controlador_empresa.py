@@ -28,7 +28,10 @@ class ControladorEmpresas:
         empresa_selecionada = self.tela_empresa.seleciona_empresa(self.__empresas)
         if empresa_selecionada:
             self.tela_empresa.mostra_detalhes_empresa(empresa_selecionada)
-
+            
+    def retornar(self):
+        self.__controlador_sistema.abre_tela()
+        
     def abre_tela(self):
         while True:
             opcao = self.tela_empresa.menu_empresa()
@@ -40,6 +43,6 @@ class ControladorEmpresas:
             elif opcao == 3:
                 self.ver_detalhes_empresa()
             elif opcao == 0:
-                break
+                self.retornar()
             else:
                 self.tela.mostra_mensagem("Opção inválida!")

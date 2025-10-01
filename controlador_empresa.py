@@ -9,29 +9,29 @@ class ControladorEmpresas:
         self.__controlador_sistema = controlador_sistema
 
     def cadastrar_empresa(self): #verificar se não há empresas repetidas!!!!
-        dados = self.tela.pega_dados_empresa()
+        dados = self.tela_empresa.pega_dados_empresa()
         try:
             nova_empresa = Empresa(dados["nome"], dados["cnpj"], dados["telefone"])
-            self.empresas.append(nova_empresa)
-            self.tela.mostra_mensagem("Empresa cadastrada com sucesso!")
+            self.__empresas.append(nova_empresa)
+            self.tela_empresa.mostra_mensagem("Empresa cadastrada com sucesso!")
         except (ValueError, TypeError) as e:
-            self.tela.mostra_mensagem(f"Erro ao cadastrar: {e}")
+            self.tela_empresa.mostra_mensagem(f"Erro ao cadastrar: {e}")
 
     def listar_empresas(self):
-        self.tela.mostra_empresas(self.empresas)
+        self.tela_empresa.mostra_empresas(self.__empresas)
 
     def ver_detalhes_empresa(self):
-        if not self.empresas:
-            self.tela.mostra_mensagem("Nenhuma empresa cadastrada.")
+        if not self.__empresas:
+            self.tela_empresa.mostra_mensagem("Nenhuma empresa cadastrada.")
             return
 
-        empresa_selecionada = self.tela.seleciona_empresa(self.empresas)
+        empresa_selecionada = self.tela_empresa.seleciona_empresa(self.__empresas)
         if empresa_selecionada:
-            self.tela.mostra_detalhes_empresa(empresa_selecionada)
+            self.tela_empresa.mostra_detalhes_empresa(empresa_selecionada)
 
-    def iniciar(self):
+    def abre_tela(self):
         while True:
-            opcao = self.tela.menu_empresa()
+            opcao = self.tela_empresa.menu_empresa()
 
             if opcao == 1:
                 self.cadastrar_empresa()

@@ -12,10 +12,8 @@ class Pessoa:
         if isinstance(celular, str):
             self.__celular = celular
         if isinstance(idade, int):
-            if idade >= 18:
-                self.__idade = idade
-            else: 
-                print('Infelizmente menores de idade não podem participar da viagem')
+            self.__idade = idade
+            
 
     @property
     def nome(self):
@@ -55,10 +53,3 @@ class Pessoa:
     def idade(self, idade: int):
         if isinstance(idade, int):
             self.__idade = idade
-
-
-    def valor_falta_pagar(self):
-    
-    def valor_pago(self):
-    
-    def verificar_se_pagou(self):

@@ -1,11 +1,13 @@
 class TelaEmpresa:
+    def __init__(self, controlador):
+        self.__controlador = controlador
+
     def menu_empresa(self) -> int:
         print("\n----- Menu de Empresas -----")
         print("1. Cadastrar Empresa")
         print("2. Listar Empresas")
         print("3. Ver Detalhes de Empresa e seus Transportes")
         print("0. Voltar ao Menu anterior")
-
         while True:
             try:
                 opcao = int(input("Escolha uma opção: "))
@@ -32,7 +34,6 @@ class TelaEmpresa:
         self.mostra_empresas(empresas)
         if not empresas:
             return None
-
         while True:
             try:
                 escolha = int(input("Digite o número da empresa para ver os detalhes: "))
@@ -53,7 +54,7 @@ class TelaEmpresa:
             print("Nenhum transporte cadastrado para esta empresa.")
         else:
             for transporte in empresa.transportes:
-                print(f"  - {transporte}")
+                print(f" - {transporte}")
         print("-------------------------------")
 
     def mostra_mensagem(self, msg: str):

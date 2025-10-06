@@ -4,7 +4,6 @@ class TelaTransporte:
         print("1. Cadastrar Transporte")
         print("2. Listar Transportes")
         print("0. Voltar ao Menu anterior")
-
         while True:
             try:
                 opcao = int(input("Escolha uma opção: "))
@@ -17,7 +16,6 @@ class TelaTransporte:
         print("Selecione a empresa:")
         for i, empresa in enumerate(empresas):
             print(f"{i + 1}. {empresa.nome}")
-
         while True:
             try:
                 escolha = int(input("Número da empresa: "))
@@ -28,29 +26,11 @@ class TelaTransporte:
                     print("Número inválido.")
             except ValueError:
                 print("Por favor, digite um número.")
-
         tipo = input("Tipo do transporte: ")
-
-        while True:
-            try:
-                valor = float(input("Valor do transporte: R$ "))
-                break
-            except ValueError:
-                print("Valor inválido. Use ponto para decimais (ex: 150.50).")
-
         return {
             "empresa": empresa_selecionada,
             "tipo": tipo,
-            "valor": valor
         }
 
     def mostra_transportes(self, transportes: list):
-        print("\n--- Lista de Transportes Cadastrados ---")
-        if not transportes:
-            print("Nenhum transporte cadastrado.")
-        else:
-            for i, transporte in enumerate(transportes, 1):
-                print(f"{i}. {transporte}")
-
-    def mostra_mensagem(self, msg: str):
-        print(f"\n>> {msg} <<")
+        print("\n--- Lista de Transportes Cad

@@ -4,7 +4,7 @@ from entidade.empresa import Empresa
 
 class ControladorEmpresas:
     def __init__(self, controlador_sistema):
-        self.__tela_empresa = TelaEmpresa()
+        self.__tela_empresa = TelaEmpresa(self)
         self.__empresas = []
         self.__controlador_sistema = controlador_sistema
 

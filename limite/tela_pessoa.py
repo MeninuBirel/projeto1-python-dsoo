@@ -1,8 +1,7 @@
 class TelaPessoa():
-
     def __init__(self, controlador):
         self.__controlador = controlador
-    
+
     def le_num_inteiro(self, mensagem: str = '', inteiros_validos: [] = None):
         while True:
             valor_lido = input(mensagem)
@@ -15,16 +14,15 @@ class TelaPessoa():
                 print('Valor Incorreto: Digite um valor numerico inteiro valido')
                 if inteiros_validos:
                     print(f'Valores válidos: {inteiros_validos}')
-    
+
     def mostra_tela_opcoes(self):
         print('-------CADASTRO PESSOAS-------')
         print('0 - Retornar')
         print('1 - Incluir Pessoa')
         print('2 - Excluir Pessoa')
-        print('3 - Verificar quanto falta para pessoa pagar')
-        print('4 - Verificar quanto a pessoa já pagou')
-        print('5 - Verificar se a pessoa já pagou o pacote completo')
-        opcao =  self.le_num_inteiro('Escolha a opcao: ', [0, 1, 2, 3, 4, 5])
+        print('3 - Editar dados da Pessoa')
+        print('4 - Listar Pessoas')
+        opcao = self.le_num_inteiro('Escolha a opcao: ', [0, 1, 2, 3, 4])
         return opcao
 
     def pega_dados_pessoa(self):
@@ -32,29 +30,27 @@ class TelaPessoa():
         nome = input('Nome: ')
         celular = input('Celular: ')
         identificacao = input('Identificacao: ')
-        idade = input('idade: ')
-        if isinstance(nome, str) and isinstance(celular, str) and isinstance(identificacao, str) and isinstance(idade, int):
+        idade = int(input('idade: '))
+        if isinstance(nome, str) and isinstance(celular, str) and isinstance(identificacao, str):
             if idade < 18:
-                self.__tela_pessoa.mostra_mensagem('Infelizmente menores de idade não podem participar da viagem')
+                self.mostra_mensagem('Infelizmente menores de idade não podem participar da viagem')
                 return
             else:
                 return {'nome': nome, 'celular': celular, 'identificacao': identificacao, 'idade': idade}
-    
+
     def mostra_pessoa(self, dados_pessoa):
         print('Nome: ', dados_pessoa['nome'])
         print('Celular: ', dados_pessoa['celular'])
-        print('identificacao: '. dados_pessoa['identificacao'])
+        print('identificacao: ', dados_pessoa['identificacao'])
         print('Idade: ', dados_pessoa['idade'])
         print('\n')
 
     def seleciona_pessoa(self):
         identificacao = input('Identificação da pessoa que deseja selecionar: ')
         return identificacao
-    
+
     def mostra_mensagem(self, mensagem):
         print(mensagem)
-    
-    def mostra_pessoas(self, pessoas):
-        print('\n===Lista de Pessoas===')
-        for pessoa in pessoas:
-            print(pessoa)
+
+    def mostra_pessoas(self, pessoa):
+        self.mostra_mensagem(str(pessoa))  # Usa o __str__ da Entidade

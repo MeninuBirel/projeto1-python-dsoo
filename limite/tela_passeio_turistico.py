@@ -1,4 +1,4 @@
-class TelaPссеioTuristico():
+class TelaPasseioTuristico():
     def __init__(self, controlador):
         self.__controlador = controlador
 

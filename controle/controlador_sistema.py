@@ -1,12 +1,12 @@
+from controle.controlador_empresa import ControladorEmpresas
+from controle.controlador_local import ControladorLocais
+from controle.controlador_pagamento import ControladorPagamentos
+from controle.controlador_passeio_turistico import ControladorPasseioTuristico
+from controle.controlador_pessoa import ControladorPessoas
+from controle.controlador_transporte import ControladorTransporte
+from controle.controlador_trecho import ControladorTrechos
+from controle.controlador_viagem import ControladorViagem
 from limite.tela_sistema import TelaSistema
-from controlador.controlador_local import ControladorLocais
-from controlador.controlador_pessoa import ControladorPessoas
-from controlador.controlador_transporte import ControladorTransportes
-from controlador.controlador_empresa import ControladorEmpresas
-from controlador.controlador_trecho import ControladorTrechos
-from controlador.controlador_passeio_turistico import ControladorPasseiosTuristicos
-from controlador.controlador_pagamento import ControladorPagamentos
-from controlador.controlador_viagem import ControladorViagem
 
 
 class ControladorSistema:
@@ -14,10 +14,10 @@ class ControladorSistema:
         self.__tela_sistema = TelaSistema()
         self.__controlador_locais = ControladorLocais(self)
         self.__controlador_pessoas = ControladorPessoas(self)
-        self.__controlador_transportes = ControladorTransportes(self)
+        self.__controlador_transportes = ControladorTransporte(self)
         self.__controlador_empresas = ControladorEmpresas(self)
         self.__controlador_trechos = ControladorTrechos(self)
-        self.__controlador_passeios_turisticos = ControladorPasseiosTuristicos(self)
+        self.__controlador_passeio_turistico = ControladorPasseioTuristico(self)
         self.__controlador_pagamentos = ControladorPagamentos(self)
         self.__controlador_viagem = ControladorViagem(self)
 
@@ -43,7 +43,7 @@ class ControladorSistema:
 
     @property
     def controlador_passeios_turisticos(self):
-        return self.__controlador_passeios_turisticos
+        return self.__controlador_passeio_turistico  # Corrigido para o nome da variável de instância
 
     @property
     def controlador_pagamentos(self):

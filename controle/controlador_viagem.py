@@ -8,7 +8,7 @@ class ControladorViagem:
         self.__tela_viagem = TelaViagem(self)
         self.__controlador_sistema = controlador_sistema
         self.__controlador_trechos = controlador_sistema.controlador_trechos
-        self.__controlador_passeios = controlador_sistema.controlador_passeios_turisticos
+        self.__controlador_passeio_turistico = controlador_sistema.controlador_passeios_turisticos
         self.__controlador_pessoas = controlador_sistema.controlador_pessoas
         self.__controlador_pagamentos = controlador_sistema.controlador_pagamentos
 
@@ -17,7 +17,7 @@ class ControladorViagem:
         for trecho in self.__controlador_trechos.trechos:
             total_por_pessoa += trecho.valor_trecho
 
-        for passeio in self.__controlador_passeios.passeios:
+        for passeio in self.__controlador_passeio_turistico.passeios:
             total_por_pessoa += passeio.valor_passeio
 
         return total_por_pessoa

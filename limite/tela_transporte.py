@@ -33,4 +33,12 @@ class TelaTransporte:
         }
 
     def mostra_transportes(self, transportes: list):
-        print("\n--- Lista de Transportes Cad
+        print("\n--- Lista de Transportes Cadastrados ---")
+        if not transportes:
+            print("Nenhum transporte cadastrado.")
+        else:
+            for i, transporte in enumerate(transportes, 1):
+                print(f"{i}. {transporte}")
+
+    def mostra_mensagem(self, msg: str):
+        print(f"\n>> {msg} <<")

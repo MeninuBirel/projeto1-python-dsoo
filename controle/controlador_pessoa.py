@@ -63,6 +63,14 @@ class ControladorPessoas():
                 'identificacao': pessoa.identificacao,
                 'idade': pessoa.idade
             })
+            
+    def listar_pessoas(self):
+        self.__tela_pessoa.mostra_mensagem("--- Lista de Pessoas Registradas ---")
+        if not self.__pessoas:
+            self.__tela_pessoa.mostra_mensagem("Nenhuma pessoa registrada.")
+            return
+        for pessoa in self.__pessoas:
+            self.__tela_pessoa.mostra_pessoas(pessoa)
 
     def retornar(self):
         self.__controlador_sistema.abre_tela()
@@ -80,10 +88,4 @@ class ControladorPessoas():
             funcao_escolhida = lista_opcoes[opcao]
             funcao_escolhida()
 
-    def listar_pessoas(self):
-        self.__tela_pessoa.mostra_mensagem("--- Lista de Pessoas Registradas ---")
-        if not self.__pessoas:
-            self.__tela_pessoa.mostra_mensagem("Nenhuma pessoa registrada.")
-            return
-        for pessoa in self.__pessoas:
-            self.__tela_pessoa.mostra_pessoas(pessoa)
+    

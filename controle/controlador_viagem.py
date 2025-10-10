@@ -8,7 +8,7 @@ class ControladorViagem:
         self.__tela_viagem = TelaViagem(self)
         self.__controlador_sistema = controlador_sistema
         self.__controlador_trechos = controlador_sistema.controlador_trechos
-        self.__controlador_passeio_turistico = controlador_sistema.controlador_passeios_turisticos
+        self.__controlador_passeio_turistico = controlador_sistema.controlador_passeio_turistico
         self.__controlador_pessoas = controlador_sistema.controlador_pessoas
         self.__controlador_pagamentos = controlador_sistema.controlador_pagamentos
 

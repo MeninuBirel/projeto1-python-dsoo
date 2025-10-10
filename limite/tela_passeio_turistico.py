@@ -21,15 +21,12 @@ class TelaPasseioTuristico():
             try:
                 # 1. Tenta converter a entrada (string) para float
                 valor = float(valor_lido)
-
                 # 2. Verifica se atende a um requisito mínimo (como valor > 0)
                 if valor <= minimo:
                     print(f'Valor Incorreto: O valor deve ser maior que {minimo:.2f}.')
                     continue
-
                 # 3. Se tudo estiver correto, retorna o valor
                 return valor
-
             except ValueError:
                 # 4. Trata o erro se a conversão para float falhar
                 print('Valor Incorreto: Digite um valor numérico válido (ex: 10.50).')
@@ -40,7 +37,7 @@ class TelaPasseioTuristico():
         print('1 - Incluir Passeio Turístico')
         print('2 - Excluir Passeio Turístico')
         print('3 - Listar Passeios Turísticos')
-        opcao = self.le_num_inteiro('Escolha a opcao: ', [0, 1, 2, 3]) # Corrigido para incluir a opção 3
+        opcao = self.le_num_inteiro('Escolha a opcao: ', [0, 1, 2, 3])
         return opcao
 
     def pega_dados_passeio(self):
@@ -50,12 +47,8 @@ class TelaPasseioTuristico():
         atracao_turistica = input('Atração Turística: ')
         horario_inc = input('Horário Início: ')
         horario_fim = input('horário Fim: ')
-        valor_passeio = self.le_num_float('Valor Passeio: R$ ', minimo=0.0)
-        
-        # A validação de tipo já é feita nas funções de leitura.
-        # Esta verificação pode ser simplificada ou removida se confiar nas entradas.
-        if all(isinstance(val, str) for val in [dia, cidade, atracao_turistica, horario_inc, horario_fim]) \
-           and isinstance(valor_passeio, float):
+        valor_passeio = self.le_num_float('Valor Passeio: R$ ', minimo=0.0) 
+        if isinstance(dia, str) and isinstance(cidade, str) and isinstance(atracao_turistica, str) and isinstance(horario_inc, str) and isinstance(horario_fim, str) and isinstance(valor_passeio, float):
             return {
                 'dia': dia,
                 'cidade': cidade,
@@ -82,4 +75,4 @@ class TelaPasseioTuristico():
         print(mensagem)
 
     def mostra_passeios(self, passeio):
-        self.mostra_mensagem(str(passeio))  # Usa o __str__ da Entidade
+        self.mostra_mensagem(str(passeio))  

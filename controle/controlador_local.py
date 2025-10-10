@@ -40,9 +40,8 @@ class ControladorLocais():
         else:
             self.__tela_local.mostra_mensagem(f'Erro: esse local NÃO está cadastrado!')
 
-    # O código original possui duas funções com o mesmo nome "lista_locais".
-    # Estou mantendo como foi enviado, apenas aplicando a formatação.
-    def lista_locais(self):
+    
+    def listar_locais(self):
         self.__tela_local.mostra_mensagem("--- Lista de Locais Registrados ---")
         if not self.__locais:
             self.__tela_local.mostra_mensagem("Nenhum local registrado.")

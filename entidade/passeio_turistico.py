@@ -31,6 +31,7 @@ class PasseioTuristico:
     @property
     def cidade(self):
         return self.__cidade
+        
     @cidade.setter
     def cidade(self, cidade: str):
         if isinstance(cidade, str):
@@ -39,6 +40,7 @@ class PasseioTuristico:
     @property
     def atracao_turistica(self):
         return self.__atracao_turistica
+        
     @atracao_turistica.setter
     def atracao_turistica(self, atracao_turistica: str):
         if isinstance(atracao_turistica, str):
@@ -47,6 +49,7 @@ class PasseioTuristico:
     @property
     def horario_inc(self):
         return self.__horario_inc
+        
     @horario_inc.setter
     def horario_inc(self, horario_inc: str):
         if isinstance(horario_inc, str):
@@ -55,6 +58,7 @@ class PasseioTuristico:
     @property
     def horario_fim(self):
         return self.__horario_fim
+        
     @horario_fim.setter
     def horario_fim(self, horario_fim: str):
         if isinstance(horario_fim, str):
@@ -63,6 +67,7 @@ class PasseioTuristico:
     @property
     def valor_passeio(self):
         return self.__valor_passeio
+        
     @valor_passeio.setter
     def valor_passeio(self, valor_passeio: float):
         if isinstance(valor_passeio, float):

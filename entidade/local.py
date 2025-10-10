@@ -10,6 +10,7 @@ class Local:
     @property
     def cidade(self):
         return self.__cidade
+        
     @cidade.setter
     def cidade(self, cidade: str):
         if isinstance(cidade, str):
@@ -25,4 +26,4 @@ class Local:
             self.__pais = pais
 
     def __str__(self):
-        return f'local(cidade={self.__cidade}, pais={self.__pais})'
+        return f'Cidade: {self.__cidade}, Pais: {self.__pais}'

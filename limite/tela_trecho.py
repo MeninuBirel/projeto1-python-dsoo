@@ -1,5 +1,6 @@
 from entidade.trecho import Trecho
 from entidade.transporte import Transporte
+from entidade.local import Local
 
 
 class TelaTrecho():
@@ -42,8 +43,10 @@ class TelaTrecho():
         print('-------CADASTRO TRECHOS-------')
         print('0 - Retornar')
         print('1 - Incluir Trecho')
-        print('2 - Listar Trechos')
-        opcao = self.le_num_inteiro('Escolha a opcao: ', [0, 1, 2])
+        print('2 - Excluir Trecho')
+        print('3 - Alterar Trecho')
+        print('4 - Listar Trechos')
+        opcao = self.le_num_inteiro('Escolha a opcao: ', [0, 1, 2, 3, 4])
         return opcao
 
     def seleciona_transporte(self):
@@ -57,7 +60,7 @@ class TelaTrecho():
 
         opcoes_validas = []
         for i, transporte in enumerate(transportes_cadastrados):
-            print(f"{i + 1} - Tipo: {transporte.tipo} | Modelo: {transporte.modelo}")
+            print(f"{i + 1} - Tipo: {transporte.tipo} | Empresa: {transporte.empresa}")
             opcoes_validas.append(i + 1)
 
         opcoes_validas.append(0)  # Opção para Cancelar
@@ -70,35 +73,57 @@ class TelaTrecho():
                 return None
             # Retorna o OBJETO Transporte selecionado
             return transportes_cadastrados[escolha - 1]
+        
+    def seleciona_local(self):
+        controlador_locais = self.__controlador.controlador_locais
+        locais_cadastrados = controlador_locais.locais
+        print('\n--- Seleção de Local ---')
+
+        if not locais_cadastrados:
+            self.mostra_mensagem("Erro: Não há locais cadastrados.")
+            return None
+        
+        opcoes_validas = []
+        for i, local in enumerate(locais_cadastrados):
+            print(f"{i + 1} - Cidade: {local.cidade} | País: {local.pais}")
+            opcoes_validas.append(i + 1)
+
+        opcoes_validas.append(0)  # Opção para Cancelar
+        while True:
+            escolha = self.le_num_inteiro(
+                "Selecione o número do local (0 para cancelar): ", opcoes_validas
+            )
+            if escolha == 0:
+                self.mostra_mensagem("Operação cancelada.")
+                return None
+            # Retorna o OBJETO local selecionado
+            return locais_cadastrados[escolha - 1]
+    
 
     def pega_dados_trecho(self):
         print('----- Dados Trecho -----')
         data = input('Data: ')
-        cidade_origem = input('Cidade origem: ')
-        pais_origem = input('País origem:')
-        cidade_destino = input('Cidade destino: ')
-        pais_destino = input('País destino: ')
+        origem = self.seleciona_local()
+        if origem is None:
+            return None
+        destino = self.seleciona_local()
+        if destino is None:
+            return None
         transporte = self.seleciona_transporte()
-        
-        # Nota: O código original usava 'transporte_selecionado' aqui, 
-        # mas a variável é 'transporte'. Mantive a lógica original.
         if transporte is None:
             return None
-            
         valor_trecho = self.le_num_float('Valor Trecho: R$ ', minimo=0.0)
 
         return {
             'data': data,
-            'cidade_origem': cidade_origem,
-            'pais_origem': pais_origem,
-            'cidade_destino': cidade_destino,
-            'pais_destino': pais_destino,
+            'origem': origem,
+            'destino': destino,
             'transporte': transporte,
             'valor_trecho': valor_trecho
         }
 
     def mostra_trechos(self, trecho):
-        self.mostra_mensagem(str(trecho))  # Usa o __str__ da Entidade
+        self.mostra_mensagem(str(trecho))  
 
     def mostra_mensagem(self, mensagem):
         print(mensagem)

@@ -28,3 +28,7 @@ class TelaSistema:
         opcoes_validas = [0, 1, 2, 3, 4, 5, 6, 7, 8]
         opcao = self.le_num_inteiro('Escolha a opcao: ', opcoes_validas)
         return opcao
+    
+    def mostra_mensagem(self, mensagem):
+        print(mensagem)
+

@@ -42,8 +42,8 @@ class ControladorSistema:
         return self.__controlador_trechos
 
     @property
-    def controlador_passeios_turisticos(self):
-        return self.__controlador_passeio_turistico  # Corrigido para o nome da variável de instância
+    def controlador_passeio_turistico(self):
+        return self.__controlador_passeio_turistico  
 
     @property
     def controlador_pagamentos(self):
@@ -93,7 +93,7 @@ class ControladorSistema:
         self.__controlador_trechos.abre_tela()
 
     def cadastra_passeios_turisticos(self):
-        self.__controlador_passeios_turisticos.abre_tela()
+        self.__controlador_passeio_turistico.abre_tela()
 
     def cadastra_pagamentos(self):
         self.__controlador_pagamentos.abre_tela()

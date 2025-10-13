@@ -20,9 +20,10 @@ class TelaLocal():
         print('0 - Retornar')
         print('1 - Incluir Local')
         print('2 - Excluir Local')
-        print('3 - Listar Locais')
+        print('3 - Alterar Local')
+        print('4 - Listar Locais')
 
-        opcao = self.le_num_inteiro('Escolha a opcao: ', [0, 1, 2, 3])
+        opcao = self.le_num_inteiro('Escolha a opcao: ', [0, 1, 2, 3, 4])
         return opcao
 
     def pega_dados_local(self):
@@ -45,4 +46,4 @@ class TelaLocal():
         print(mensagem)
 
     def mostra_locais(self, local):
-        self.mostra_mensagem(str(local))  # Usa o __str__ da Entidade
+        self.mostra_mensagem(str(local)) 

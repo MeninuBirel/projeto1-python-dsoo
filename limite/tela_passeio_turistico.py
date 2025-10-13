@@ -36,8 +36,9 @@ class TelaPasseioTuristico():
         print('0 - Retornar')
         print('1 - Incluir Passeio Turístico')
         print('2 - Excluir Passeio Turístico')
-        print('3 - Listar Passeios Turísticos')
-        opcao = self.le_num_inteiro('Escolha a opcao: ', [0, 1, 2, 3])
+        print('3 - Alterar Passeio Turístico')
+        print('4 - Listar Passeios Turísticos')
+        opcao = self.le_num_inteiro('Escolha a opcao: ', [0, 1, 2, 3, 4])
         return opcao
 
     def pega_dados_passeio(self):

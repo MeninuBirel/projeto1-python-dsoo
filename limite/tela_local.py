@@ -46,4 +46,4 @@ class TelaLocal():
         print(mensagem)
 
     def mostra_locais(self, local):
-        self.mostra_mensagem(str(local)) 
+        self.mostra_mensagem(str(local))  

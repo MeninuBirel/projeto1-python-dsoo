@@ -39,6 +39,18 @@ class ControladorLocais():
             self.__tela_local.mostra_mensagem('Local removido com sucesso!')
         else:
             self.__tela_local.mostra_mensagem(f'Erro: esse local NÃO está cadastrado!')
+    
+    def alterar_local(self):
+        self.lista_locais()
+        identificacao_local = self.__tela_local.seleciona_local()
+        local = self.find_local_by_cidade(identificacao_local)
+        if local is not None:
+            novos_dados = self.__tela_local.pega_dados_local()
+            local.cidade = novos_dados['cidade']
+            local.pais = novos_dados['pais']
+            self.lista_locais()
+        else:
+            self.__tela_local.mostra_mensagem('Erro: local não está cadastrado')
 
     
     def listar_locais(self):
@@ -64,7 +76,8 @@ class ControladorLocais():
             0: self.retornar,
             1: self.incluir_local,
             2: self.excluir_local,
-            3: self.lista_locais
+            3: self.alterar_local,
+            4: self.listar_locais
         }
         while True:
             opcao = self.__tela_local.mostra_tela_opcoes()

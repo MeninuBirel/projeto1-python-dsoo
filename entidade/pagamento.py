@@ -43,5 +43,4 @@ class Pagamento(ABC):
             
     @abstractmethod
     def get_metodo(self):
-        """Retorna o método de pagamento para exibição."""
         pass

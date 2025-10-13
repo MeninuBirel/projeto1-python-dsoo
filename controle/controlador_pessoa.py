@@ -87,5 +87,3 @@ class ControladorPessoas():
             opcao = self.__tela_pessoa.mostra_tela_opcoes()
             funcao_escolhida = lista_opcoes[opcao]
             funcao_escolhida()
-
-    

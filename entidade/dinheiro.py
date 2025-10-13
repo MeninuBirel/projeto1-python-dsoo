@@ -1,12 +1,12 @@
 from entidade.pagamento import Pagamento
 from entidade.pessoa import Pessoa
+
 class Dinheiro(Pagamento):
     def __init__(self, valor: float, pessoa: Pessoa, data: str, cpf: str):
         super().__init__(valor, pessoa, data)
         self.__cpf = None
         if isinstance(cpf, str):
             self.__cpf = cpf
-
 
     @property
     def cpf(self):

@@ -26,4 +26,4 @@ class Local:
             self.__pais = pais
 
     def __str__(self):
-        return f'Cidade: {self.__cidade}, Pais: {self.__pais}'
+        return f'Cidade: {self.__cidade} | Pais: {self.__pais}'

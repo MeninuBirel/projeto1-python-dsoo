@@ -1,5 +1,6 @@
 from entidade.empresa import Empresa
-class Transporte:
+
+class Transporte():
     def __init__(self, tipo: str, empresa: Empresa):
         self.__tipo = None
         if isinstance(tipo, str):
@@ -13,23 +14,23 @@ class Transporte:
         return self.__tipo
     
     @tipo.setter
-    def tipo(self, novo_tipo: str):
-        if not isinstance(novo_tipo, str) or not novo_tipo.strip():
+    def tipo(self, tipo: str):
+        if not isinstance(tipo, str) or not tipo.strip():
             raise ValueError("O tipo de transporte deve ser um texto não vazio.")
-        self.__tipo = novo_tipo
+        self.__tipo = tipo
         
     @property
     def empresa(self):
         return self.__empresa
     
     @empresa.setter
-    def empresa(self, nova_empresa: Empresa):
-        if not isinstance(nova_empresa, Empresa):
+    def empresa(self, empresa: Empresa):
+        if not isinstance(empresa, Empresa):
             raise TypeError("O atributo 'empresa' deve ser uma instância da classe Empresa.")
-        self.__empresa = nova_empresa
+        self.__empresa = empresa
         
     def __str__(self):
         nome_empresa = self.empresa.nome if self.empresa else "N/A"
         return (
-            f"Transporte [Tipo: {self.tipo}, Empresa: {nome_empresa}, "
+            f"Transporte - Tipo: {self.tipo}, Empresa: {nome_empresa}, "
         )

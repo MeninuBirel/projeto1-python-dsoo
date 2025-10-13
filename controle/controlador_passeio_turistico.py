@@ -38,13 +38,29 @@ class ControladorPasseioTuristico():
 
     def excluir_passeio(self):
         self.lista_passeios()
-        atracao = self.tela_passeio_turistico.seleciona_passeio()
+        atracao = self.__tela_passeio_turistico.seleciona_passeio()
         passeio_a_remover = self.find_passeio_by_atracao(atracao)
         if passeio_a_remover is not None:
             self.__passeios_turisticos.remove(passeio_a_remover)
             self.__tela_passeio_turistico.mostra_mensagem('Passeio removido com sucesso!')
         else:
             self.__tela_passeio_turistico.mostra_mensagem(f'Erro: esse passeio NÃO está cadastrado!')
+    
+    def alterar_passeio(self):
+        self.lista_passeios()
+        identificacao_passeio = self.__tela_passeio_turistico.seleciona_passeio()
+        passeio = self.find_passeio_by_atracao(identificacao_passeio)
+        if passeio is not None:
+            novos_dados = self.__tela_passeio_turistico.pega_dados_passeio()
+            passeio.dia = novos_dados['dia']
+            passeio.cidade = novos_dados['cidade']
+            passeio.atracao_turistica = novos_dados['atracao_turistica']
+            passeio.horario_inc = novos_dados['horario_inc']
+            passeio.horario_fim = novos_dados['horario_fim']
+            passeio.valor_passeio = novos_dados['valor_passeio']
+            self.lista_passeios()
+        else:
+            self.__tela_passeio_turistico.mostra_mensagem('Erro: passeio não está cadastrad0')
 
     def lista_passeios(self):
         for passeio in self.__passeios_turisticos:
@@ -73,7 +89,8 @@ class ControladorPasseioTuristico():
             0: self.retornar,
             1: self.incluir_passeio,
             2: self.excluir_passeio,
-            3: self.listar_passeios
+            3: self.alterar_passeio,
+            4: self.listar_passeios
         }
         while True:
             opcao = self.__tela_passeio_turistico.mostra_tela_opcoes()

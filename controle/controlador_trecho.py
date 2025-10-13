@@ -34,7 +34,7 @@ class ControladorTrechos():
         if dados_trecho is None: 
             return None
             
-        origem_obj = dados_trecho['origem'] # Objeto origem
+        origem_obj = dados_trecho['origem'] 
         destino_obj = dados_trecho['destino']
         transporte_obj = dados_trecho['transporte']
         trecho = self.find_trecho(dados_trecho['data'], origem_obj, destino_obj, transporte_obj)
@@ -50,7 +50,6 @@ class ControladorTrechos():
         if not self.__trechos:
             return
 
-        # Pede os dados para identificar o trecho a ser excluído
         self.__tela_trecho.mostra_mensagem("\n--- Selecione o Trecho a ser Excluído ---")
         dados_selecao = self.__tela_trecho.pega_dados_trecho() 
         
@@ -58,7 +57,6 @@ class ControladorTrechos():
             self.__tela_trecho.mostra_mensagem("Exclusão cancelada.")
             return
 
-        # Busca o objeto Trecho
         trecho_a_remover = self.find_trecho(
             dados_selecao['data'],
             dados_selecao['origem'],
@@ -77,7 +75,6 @@ class ControladorTrechos():
         if not self.__trechos:
             return
 
-        # 1. Pede os dados para IDENTIFICAR o trecho a ser alterado (os dados ATUAIS)
         self.__tela_trecho.mostra_mensagem("\n--- Identifique o Trecho a ser Alterado (Dados Atuais) ---")
         dados_identificacao = self.__tela_trecho.pega_dados_trecho()
         
@@ -85,7 +82,6 @@ class ControladorTrechos():
             self.__tela_trecho.mostra_mensagem("Alteração cancelada.")
             return
 
-        # 1.2. Busca o Trecho
         trecho_a_alterar = self.find_trecho(
             dados_identificacao['data'],
             dados_identificacao['origem'],
@@ -94,7 +90,6 @@ class ControladorTrechos():
         )
         
         if trecho_a_alterar is not None:
-            # 2. Pede os NOVOS dados
             self.__tela_trecho.mostra_mensagem("\n--- Informe os Novos Dados para o Trecho ---")
             novos_dados = self.__tela_trecho.pega_dados_trecho()
             

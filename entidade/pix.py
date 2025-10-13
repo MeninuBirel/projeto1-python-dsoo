@@ -1,5 +1,6 @@
 from entidade.pagamento import Pagamento
 from entidade.pessoa import Pessoa
+
 class Pix(Pagamento):
     def __init__(self, valor: float, pessoa: Pessoa, data: str, cpf: str):
         super().__init__(valor, pessoa, data)
@@ -23,3 +24,4 @@ class Pix(Pagamento):
 
     def __str__(self):
         return f"PIX - Valor: R$ {self.valor:.2f} | Pessoa: {self.pessoa.nome} | Data: {self.data} | CPF: {self.cpf}"
+        

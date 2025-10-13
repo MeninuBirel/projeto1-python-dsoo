@@ -32,11 +32,10 @@ class TelaPessoa():
         identificacao = input('Identificacao: ')
         idade = int(input('idade: '))
         if isinstance(nome, str) and isinstance(celular, str) and isinstance(identificacao, str):
-            if idade < 18:
-                self.mostra_mensagem('Infelizmente menores de idade não podem participar da viagem')
-                return
-            else:
+            if idade >= 18:
                 return {'nome': nome, 'celular': celular, 'identificacao': identificacao, 'idade': idade}
+            else:
+                self.mostra_mensagem('Infelizmente menores de idade não podem participar da viagem')
 
     def mostra_pessoa(self, dados_pessoa):
         print('Nome: ', dados_pessoa['nome'])
@@ -53,4 +52,4 @@ class TelaPessoa():
         print(mensagem)
 
     def mostra_pessoas(self, pessoa):
-        self.mostra_mensagem(str(pessoa))  # Usa o __str__ da Entidade
+        self.mostra_mensagem(str(pessoa))

@@ -2,6 +2,7 @@ from limite.tela_transporte import TelaTransporte
 from entidade.transporte import Transporte
 from entidade.empresa import Empresa
 
+
 class ControladorTransporte():
     def __init__(self, controlador_sistema):
         self.__tela_transporte = TelaTransporte(self)
@@ -24,10 +25,10 @@ class ControladorTransporte():
     
     def incluir_transporte(self):
         dados_transporte = self.__tela_transporte.pega_dados_transporte()
-        if dados_transporte is None: # Se a seleção de empresa foi cancelada
+        if dados_transporte is None: 
             return None
             
-        empresa_obj = dados_transporte['empresa'] # Objeto Empresa
+        empresa_obj = dados_transporte['empresa'] 
         transporte = self.find_transporte(dados_transporte['tipo'], empresa_obj)
         if transporte is not None:
             self.__tela_transporte.mostra_mensagem('Erro: esse transporte já foi criado.')
@@ -40,20 +41,18 @@ class ControladorTransporte():
     def excluir_transporte(self):
         self.lista_transportes()
         if not self.__transportes:
-            return # Já tratado em listar_trasnportes, mas por segurança.
+            return
 
-        # Pede os dados para identificar o transporte a ser excluído
         dados_selecao = self.__tela_transporte.seleciona_transporte()
         if dados_selecao is None:
             self.__tela_transporte.mostra_mensagem("Exclusão cancelada.")
             return
 
-        # Busca o objeto Empresa usando o CNPJ fornecido
         empresa_selecionada = self.controlador_empresas.find_empresa_by_cnpj(dados_selecao['cnpj'])
         if empresa_selecionada is None:
              self.__tela_transporte.mostra_mensagem('Erro: Empresa não encontrada para o CNPJ fornecido.')
              return
-        # Busca o objeto Transporte pela combinação tipo e Empresa
+            
         transporte_a_remover = self.find_transporte(dados_selecao['tipo'], empresa_selecionada)
         if transporte_a_remover is not None:
             self.__transportes.remove(transporte_a_remover)
@@ -68,7 +67,6 @@ class ControladorTransporte():
         if not self.__transportes:
             return
 
-        # 1. Pede os dados para IDENTIFICAR o transporte a ser alterado
         dados_identificacao = self.__tela_transporte.seleciona_transporte()
         if dados_identificacao is None:
             self.__tela_transporte.mostra_mensagem("Alteração cancelada.")
@@ -79,7 +77,6 @@ class ControladorTransporte():
              self.__tela_transporte.mostra_mensagem('Erro: Empresa não encontrada para o CNPJ fornecido.')
              return
 
-        # 1.2. Busca o Transporte
         transporte_a_alterar = self.find_transporte(dados_identificacao['tipo'], empresa)
         if transporte_a_alterar is not None:
             novos_dados = self.__tela_transporte.pega_dados_transporte()

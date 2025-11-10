@@ -3,7 +3,7 @@ from entidade.transporte import Transporte
 from entidade.empresa import Empresa
 
 
-class ControladorTransporte():
+class ControladorTransportes():
     def __init__(self, controlador_sistema):
         self.__tela_transporte = TelaTransporte(self)
         self.__controlador_sistema = controlador_sistema
@@ -13,13 +13,9 @@ class ControladorTransporte():
     def transportes(self):
         return self.__transportes
     
-    @property
-    def controlador_empresas(self):
-        return self.__controlador_sistema.controlador_empresas
-    
-    def find_transporte(self, tipo: str, empresa: Empresa):
+    def find_transporte(self, tipo: str):
         for transporte in self.__transportes:
-            if transporte.tipo == tipo and transporte.empresa == empresa:
+            if transporte.tipo == tipo:
                 return transporte
         return None
     
@@ -27,43 +23,34 @@ class ControladorTransporte():
         dados_transporte = self.__tela_transporte.pega_dados_transporte()
         if dados_transporte is None: 
             return None
-            
-        empresa_obj = dados_transporte['empresa'] 
-        transporte = self.find_transporte(dados_transporte['tipo'], empresa_obj)
+        transporte = self.find_transporte(dados_transporte['tipo'])
         if transporte is not None:
             self.__tela_transporte.mostra_mensagem('Erro: esse transporte já foi criado.')
             return None
-        novo_transporte = Transporte(dados_transporte['tipo'], empresa_obj)
+        novo_transporte = Transporte(dados_transporte['tipo'])
         self.__transportes.append(novo_transporte)
         self.__tela_transporte.mostra_mensagem('Transporte incluído com sucesso!')
-
-
+    
     def excluir_transporte(self):
-        self.lista_transportes()
+        self.listar_transportes()
         if not self.__transportes:
             return
 
         dados_selecao = self.__tela_transporte.seleciona_transporte()
         if dados_selecao is None:
             self.__tela_transporte.mostra_mensagem("Exclusão cancelada.")
-            return
-
-        empresa_selecionada = self.controlador_empresas.find_empresa_by_cnpj(dados_selecao['cnpj'])
-        if empresa_selecionada is None:
-             self.__tela_transporte.mostra_mensagem('Erro: Empresa não encontrada para o CNPJ fornecido.')
-             return
-            
-        transporte_a_remover = self.find_transporte(dados_selecao['tipo'], empresa_selecionada)
+            return    
+        transporte_a_remover = self.find_transporte(dados_selecao['tipo'])
         if transporte_a_remover is not None:
             self.__transportes.remove(transporte_a_remover)
             self.__tela_transporte.mostra_mensagem('Transporte removido com sucesso!')
         else:
             self.__tela_transporte.mostra_mensagem(
-                f'Erro: O transporte Tipo "{dados_selecao["tipo"]}" com a empresa "{empresa_selecionada.nome}" NÃO está cadastrado!'
+                f'Erro: O transporte NÃO está cadastrado!'
             )
-        
+    
     def alterar_transporte(self):
-        self.lista_transportes()
+        self.listar_transportes()
         if not self.__transportes:
             return
 
@@ -71,29 +58,14 @@ class ControladorTransporte():
         if dados_identificacao is None:
             self.__tela_transporte.mostra_mensagem("Alteração cancelada.")
             return
-
-        empresa = self.controlador_empresas.find_empresa_by_cnpj(dados_identificacao['cnpj'])
-        if empresa is None:
-             self.__tela_transporte.mostra_mensagem('Erro: Empresa não encontrada para o CNPJ fornecido.')
-             return
-
-        transporte_a_alterar = self.find_transporte(dados_identificacao['tipo'], empresa)
+        transporte_a_alterar = self.find_transporte(dados_identificacao['tipo'])
         if transporte_a_alterar is not None:
             novos_dados = self.__tela_transporte.pega_dados_transporte()
             transporte_a_alterar.tipo = novos_dados['tipo']
-            transporte_a_alterar.empresa = novos_dados['empresa']
-            self.lista_transportes()
+            self.listar_transportes()
         else:
             self.__tela_transporte.mostra_mensagem('Erro: Transporte não encontrado.')
-
     
-    def lista_transportes(self):
-        for transporte in self.__transportes:
-            self.__tela_transporte.mostra_transporte({
-                'tipo': transporte.tipo,
-                'empresa': transporte.empresa,
-            })
-            
     def listar_transportes(self):
         self.__tela_transporte.mostra_mensagem("--- Lista de Transportes Registrados ---")
         if not self.__transportes:
@@ -101,7 +73,7 @@ class ControladorTransporte():
             return
         for transporte in self.__transportes:
             self.__tela_transporte.mostra_transportes(transporte)
-
+    
     def retornar(self):
         self.__controlador_sistema.abre_tela()
 
@@ -117,3 +89,4 @@ class ControladorTransporte():
             opcao = self.__tela_transporte.mostra_tela_opcoes()
             funcao_escolhida = lista_opcoes[opcao]
             funcao_escolhida()
+    

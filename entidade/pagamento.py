@@ -1,6 +1,9 @@
 from abc import ABC, abstractmethod
 from entidade.pessoa import Pessoa
+
+
 class Pagamento(ABC):
+    @abstractmethod
     def __init__(self, valor: float, pessoa: Pessoa, data: str):
         self.__valor = None
         if isinstance(valor, (float, int)):
@@ -16,6 +19,7 @@ class Pagamento(ABC):
     @property
     def valor(self):
         return self.__valor
+    
     @valor.setter
     def valor(self, valor: float):
         if isinstance(valor, (float, int)) and valor > 0:

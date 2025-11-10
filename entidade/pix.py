@@ -1,11 +1,12 @@
 from entidade.pagamento import Pagamento
 from entidade.pessoa import Pessoa
 
+
 class Pix(Pagamento):
-    def __init__(self, valor: float, pessoa: Pessoa, data: str, cpf: str):
+    def __init__(self, valor: float, pessoa: Pessoa, data: str, cpf: int):
         super().__init__(valor, pessoa, data)
         self.__cpf = None
-        if isinstance(cpf, str):
+        if isinstance(cpf, int):
             self.__cpf = cpf
  
     @property
@@ -13,11 +14,9 @@ class Pix(Pagamento):
         return self.__cpf
         
     @cpf.setter
-    def cpf(self, cpf: str):
-        if isinstance(cpf, str):
+    def cpf(self, cpf: int):
+        if isinstance(cpf, int):
             self.__cpf = cpf
-        else:
-            raise ValueError("CPF deve ser uma string não vazia.")
             
     def get_metodo(self):
         return "PIX"

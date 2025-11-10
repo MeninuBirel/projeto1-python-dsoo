@@ -15,14 +15,14 @@ class TelaSistema:
     def tela_opcoes(self):
         print('----------Sistema de Viagens----------')
         print('Escolha uma opção')
-        print('1 - Pessoas')
-        print('2 - Locais')
-        print('3 - Transporte') # Corrigido 'Transposrte' -> 'Transporte'
-        print('4 - Empresas')
-        print('5 - Trechos')
-        print('6 - Passeios Turísticos')
-        print('7 - Realizar Pagamentos')
-        print('8 - Valores da Viagem e Informações dos Pagantes')
+        print('1 - cadastro de Viagens e Informações')
+        print('2 - Pessoas')
+        print('3 - Locais')
+        print('4 - Transporte') 
+        print('5 - Empresas de Trasnporte')
+        print('6 - Trechos')
+        print('7 - Passeios Turísticos')
+        print('8 - Realizar Pagamentos')
         print('0 - Finalizar sistema')
         
         opcoes_validas = [0, 1, 2, 3, 4, 5, 6, 7, 8]
@@ -31,4 +31,3 @@ class TelaSistema:
     
     def mostra_mensagem(self, mensagem):
         print(mensagem)
-

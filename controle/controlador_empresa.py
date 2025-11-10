@@ -1,7 +1,6 @@
 from limite.tela_empresa import TelaEmpresa
 from entidade.empresa import Empresa
 
-
 class ControladorEmpresas():
     def __init__(self, controlador_sistema):
         self.__tela_empresa = TelaEmpresa(self)
@@ -32,7 +31,7 @@ class ControladorEmpresas():
         return None
 
     def excluir_empresa(self):
-        self.lista_empresas()
+        self.listar_empresas()
         cnpj = self.__tela_empresa.seleciona_empresa()
         empresa_a_remover = self.find_empresa_by_cnpj(cnpj)
         if empresa_a_remover is not None:
@@ -42,7 +41,7 @@ class ControladorEmpresas():
             self.__tela_empresa.mostra_mensagem(f'Erro: essa empresa NÃO está cadastrada!')
     
     def alterar_empresa(self):
-        self.lista_empresas()
+        self.listar_empresas()
         cnpj_empresa = self.__tela_empresa.seleciona_empresa()
         empresa = self.find_empresa_by_cnpj(cnpj_empresa)
         if empresa is not None:
@@ -50,17 +49,9 @@ class ControladorEmpresas():
             empresa.nome = novos_dados['nome']
             empresa.cnpj = novos_dados['cnpj']
             empresa.telefone = novos_dados['telefone']
-            self.lista_empresas()
+            self.listar_empresas()
         else:
-            self.__tela_empresa.mostra_mensagem('Erro: empresa não está cadastrada')
-    
-    def lista_empresas(self):
-        for empresa in self.__empresas:
-            self.__tela_empresa.mostra_empresa({
-                'nome': empresa.nome,
-                'cnpj': empresa.cnpj,
-                'telefone': empresa.telefone
-            })
+            self.__tela_empresa.mostra_mensagem('Erro: empresa NÃO está cadastrada')
 
     def listar_empresas(self):
         self.__tela_empresa.mostra_mensagem("--- Lista de Empresas Registradas ---")

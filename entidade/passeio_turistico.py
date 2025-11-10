@@ -74,5 +74,5 @@ class PasseioTuristico:
             self.__valor_passeio = valor_passeio
 
     def __str__(self):
-        return f'Passeio Turístico - Dia: {self.__dia} | Cidade: {self.__cidade} | Atração Turística: {self.__atracao_turistica} | Início: {self.__horario_inc} | Fim: {self.__horario_fim} | Valor: {self.__valor_passeio:.2f}'
+        return f'Dia: {self.__dia} | Cidade: {self.__cidade} | Atração Turística: {self.__atracao_turistica} | Início: {self.__horario_inc} | Fim: {self.__horario_fim} | Valor: {self.__valor_passeio:.2f}'
         

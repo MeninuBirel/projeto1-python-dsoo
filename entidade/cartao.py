@@ -1,11 +1,13 @@
 from entidade.pagamento import Pagamento
 from entidade.pessoa import Pessoa
+
+
 class Cartao(Pagamento):
     def __init__(self, valor: float, pessoa: Pessoa, data: str, numero_cartao: str,
                  bandeira: str):
         super().__init__(valor, pessoa, data)
         self.__numero_cartao = None
-        if isinstance(numero_cartao, str):
+        if isinstance(numero_cartao, int):
             self.__numero_cartao = numero_cartao
         self.__bandeira = None
         if isinstance(bandeira, str):
@@ -16,11 +18,9 @@ class Cartao(Pagamento):
         return self.__numero_cartao
         
     @numero_cartao.setter
-    def numero_cartao(self, numero_cartao: str):
-        if isinstance(numero_cartao, str):
+    def numero_cartao(self, numero_cartao: int):
+        if isinstance(numero_cartao, int):
             self.__numero_cartao = numero_cartao
-        else:
-            raise ValueError("Número do cartão inválido.")
             
     @property
     def bandeira(self):

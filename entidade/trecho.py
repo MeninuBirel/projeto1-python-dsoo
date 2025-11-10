@@ -1,9 +1,11 @@
 from entidade.transporte import Transporte
+from entidade.empresa import Empresa
 from entidade.local import Local
 
+
 class Trecho:
-    def __init__(self, data: str, origem: Local,
-                 destino: Local, transporte: Transporte, valor_trecho: float):
+    def __init__(self, data: str, origem: Local, destino: Local, transporte: Transporte, 
+                 empresa: Empresa, valor_trecho: float):
         self.__data = None
         if isinstance(data, str):
             self.__data = data
@@ -16,6 +18,9 @@ class Trecho:
         self.__transporte = None
         if isinstance(transporte, Transporte):
             self.__transporte = transporte
+        self.__empresa = None
+        if isinstance(empresa, Empresa):
+            self.__empresa = empresa
         self.__valor_trecho = None
         if isinstance(valor_trecho, float):
             self.__valor_trecho = valor_trecho
@@ -56,6 +61,15 @@ class Trecho:
     def transporte(self, transporte: Transporte):
         if isinstance(transporte, Transporte):
             self.__transporte = transporte
+    
+    @property
+    def empresa(self):
+        return self.__empresa
+    
+    @empresa.setter
+    def empresa(self, empresa: Empresa):
+        if isinstance(empresa, Empresa):
+            self.__empresa = empresa
 
     @property
     def valor_trecho(self):
@@ -64,8 +78,9 @@ class Trecho:
     @valor_trecho.setter
     def valor_trecho(self, valor_trecho: float):
         if isinstance(valor_trecho, float):
-            self.__valor_trecho = valor_trecho # O erro de usar 'self.valor_trecho' em vez de '__valor_trecho' foi mantido, pois não é permitido alterar o código.
+            self.__valor_trecho = valor_trecho 
             
     def __str__(self):
-        return f"Trecho - Data: {self.__data} | Origem: {self.__origem} | Destino: {self.__destino} | Transporte: {self.__transporte} | valor: {self.__valor_trecho}"
+        return f"Trecho - Data: {self.__data} | Origem: {self.__origem} | Destino: {self.__destino} | Transporte: tipo - {self.__transporte}, empresa - {self.__empresa} | Valor: R$ {self.__valor_trecho}"
+        
         

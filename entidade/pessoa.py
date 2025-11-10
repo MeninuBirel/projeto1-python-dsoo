@@ -1,14 +1,14 @@
 class Pessoa:
-    def __init__(self, nome: str, celular: str, identificacao: str, idade: int):
+    def __init__(self, nome: str, celular: int, identificacao: int, idade: int):
         self.__nome = None
         self.__celular = None
         self.__identificacao = None
         self.__idade = None
-        if isinstance(identificacao, str):
+        if isinstance(identificacao, int):
             self.__identificacao = identificacao
         if isinstance(nome, str):
             self.__nome = nome
-        if isinstance(celular, str):
+        if isinstance(celular, int):
             self.__celular = celular
         if isinstance(idade, int):
             self.__idade = idade
@@ -27,8 +27,8 @@ class Pessoa:
         return self.__celular
         
     @celular.setter
-    def celular(self, celular: str):
-        if isinstance(celular, str):
+    def celular(self, celular: int):
+        if isinstance(celular, int):
             self.__celular = celular
             
     @property
@@ -36,8 +36,8 @@ class Pessoa:
         return self.__identificacao
         
     @identificacao.setter
-    def identificacao(self, identificacao: str):
-        if isinstance(identificacao, str):
+    def identificacao(self, identificacao: int):
+        if isinstance(identificacao, int):
             self.__identificacao = identificacao
 
 

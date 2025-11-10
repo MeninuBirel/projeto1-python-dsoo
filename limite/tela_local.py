@@ -25,25 +25,24 @@ class TelaLocal():
 
         opcao = self.le_num_inteiro('Escolha a opcao: ', [0, 1, 2, 3, 4])
         return opcao
-
+    
     def pega_dados_local(self):
         print('----- Dados Local -----')
         cidade = input('Cidade: ')
+        cidade.capitalize()
         pais = input('País: ')
+        pais.capitalize()
         if isinstance(cidade, str) and isinstance(pais, str):
             return {'cidade': cidade, 'pais': pais}
-
-    def mostra_local(self, dados_local):
-        print('Cidade: ', dados_local['cidade'])
-        print('Pais: ', dados_local['pais'])
-        print('\n')
-
+    
     def seleciona_local(self):
         cidade = input('Cidade do local que deseja selecionar: ')
+        cidade.capitalize()
         return cidade
-
+    
+    def mostra_locais(self, local):
+        self.mostra_mensagem(str(local))
+    
     def mostra_mensagem(self, mensagem):
         print(mensagem)
-
-    def mostra_locais(self, local):
-        self.mostra_mensagem(str(local))  
+        

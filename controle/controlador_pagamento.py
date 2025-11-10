@@ -15,9 +15,10 @@ class ControladorPagamentos():
     @property
     def pagamentos(self):
         return self.__pagamentos
-
+    
     def incluir_pagamento(self):
-        pessoas_cadastradas = self.__controlador_pessoas.pessoas
+        viagem = self.__tela_pagamento.seleciona_qual_viagem()
+        pessoas_cadastradas = viagem.pessoas
         pessoa_selecionada = self.__tela_pagamento.seleciona_pessoa_pagamento(pessoas_cadastradas)
 
         if pessoa_selecionada is None:
@@ -52,7 +53,9 @@ class ControladorPagamentos():
                 )
 
             if novo_pagamento:
-                self.__pagamentos.append(novo_pagamento)
+                viagem.pagamentos.append(novo_pagamento)
+                if novo_pagamento not in self.__pagamentos:
+                    self.__pagamentos.append(novo_pagamento)
                 self.__tela_pagamento.mostra_mensagem(
                     f"Pagamento via {dados_pagamento['tipo']} de R$ {dados_pagamento['valor']:.2f} registrado com sucesso!")
 
@@ -60,15 +63,16 @@ class ControladorPagamentos():
             self.__tela_pagamento.mostra_mensagem(f"Erro ao registrar pagamento: {e}")
         except Exception as e:
             self.__tela_pagamento.mostra_mensagem(f"Erro inesperado: {e}")
-
+    
     def listar_pagamentos(self):
+        viagem = self.__tela_pagamento.seleciona_qual_viagem()
         self.__tela_pagamento.mostra_mensagem("--- Lista de Pagamentos Registrados ---")
-        if not self.__pagamentos:
+        if not viagem.pagamentos:
             self.__tela_pagamento.mostra_mensagem("Nenhum pagamento registrado.")
             return
-        for pagamento in self.__pagamentos:
+        for pagamento in viagem.pagamentos:
             self.__tela_pagamento.mostra_pagamento(pagamento)
-
+    
     def retornar(self):
         self.__controlador_sistema.abre_tela()
 
@@ -82,4 +86,4 @@ class ControladorPagamentos():
         while True:
             opcao = self.__tela_pagamento.mostra_tela_opcoes()
             funcao_escolhida = lista_opcoes[opcao]
-            funcao_escolhida() 
+            funcao_escolhida()

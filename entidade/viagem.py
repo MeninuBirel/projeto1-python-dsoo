@@ -72,3 +72,4 @@ class Viagem():
     def __str__(self):
         return f"Viagem: {self.nome_viagem} | Código: {self.codigo} | Data de Início: {self.data_inc} | Data de Fim: {self.data_fim}"
         
+

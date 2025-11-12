@@ -28,16 +28,13 @@ class TelaLocal():
     
     def pega_dados_local(self):
         print('----- Dados Local -----')
-        cidade = input('Cidade: ')
-        cidade.capitalize()
-        pais = input('País: ')
-        pais.capitalize()
+        cidade = input('Cidade: ').capitalize()
+        pais = input('País: ').capitalize()
         if isinstance(cidade, str) and isinstance(pais, str):
             return {'cidade': cidade, 'pais': pais}
     
     def seleciona_local(self):
-        cidade = input('Cidade do local que deseja selecionar: ')
-        cidade.capitalize()
+        cidade = input('Cidade do local que deseja selecionar: ').capitalize()
         return cidade
     
     def mostra_locais(self, local):
@@ -46,3 +43,4 @@ class TelaLocal():
     def mostra_mensagem(self, mensagem):
         print(mensagem)
         
+

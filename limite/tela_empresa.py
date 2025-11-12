@@ -39,11 +39,10 @@ class TelaEmpresa:
     
     def pega_dados_empresa(self):
         print('----- Dados Empresa -----')
-        nome = input('Nome: ')
-        nome.capitalize()
+        nome = input('Nome: ').capitalize()
         cnpj = self.verificar_se_e_inteiro('cnpj: ', minimo=0)
         telefone = self.verificar_se_e_inteiro('Telefone: ', minimo=0)
-        if isinstance(nome, str) and isinstance(cnpj, str) and isinstance(telefone, str):
+        if isinstance(nome, str) and isinstance(cnpj, int) and isinstance(telefone, int):
             return {'nome': nome, 'cnpj': cnpj, 'telefone': telefone}
 
     def mostra_empresas(self, empresa):
@@ -55,4 +54,6 @@ class TelaEmpresa:
     
     def mostra_mensagem(self, mensagem):
         print(mensagem)
+        
+
         

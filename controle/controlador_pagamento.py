@@ -16,6 +16,10 @@ class ControladorPagamentos():
     def pagamentos(self):
         return self.__pagamentos
     
+    @property
+    def controlador_sistema(self):
+        return self.__controlador_sistema
+    
     def incluir_pagamento(self):
         viagem = self.__tela_pagamento.seleciona_qual_viagem()
         pessoas_cadastradas = viagem.pessoas
@@ -87,3 +91,4 @@ class ControladorPagamentos():
             opcao = self.__tela_pagamento.mostra_tela_opcoes()
             funcao_escolhida = lista_opcoes[opcao]
             funcao_escolhida()
+        

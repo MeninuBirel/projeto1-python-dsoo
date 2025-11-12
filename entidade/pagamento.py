@@ -48,3 +48,4 @@ class Pagamento(ABC):
     @abstractmethod
     def get_metodo(self):
         pass
+

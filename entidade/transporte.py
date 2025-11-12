@@ -17,4 +17,3 @@ class Transporte():
         
     def __str__(self):
         return f'tipo: {self.__tipo}'
-        

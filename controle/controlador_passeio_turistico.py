@@ -70,8 +70,8 @@ class ControladorPasseioTuristicos():
         if passeio is not None:
             novos_dados = self.__tela_passeio_turistico.pega_dados_passeio()
             #alterar nas viagens
-            for viagem in self.controlador_sistema.controlador_viagem.viagens:
-                for pas in viagem.passeios:
+            for viagem in self.controlador_sistema.controlador_viagens.viagens:
+                for pas in viagem.passeios_turisticos:
                     if pas.dia == passeio.dia and pas.cidade == passeio.dia and pas.atracao_turistica == passeio.atracao_turistica and pas.horario_inc == passeio.horario_inc and pas.horario_fim == passeio.horario_fim and pas.valor_passeio == passeio.valor_passeio:
                         pas.dia = novos_dados['dia']
                         pas.cidade = novos_dados['cidade']
@@ -130,4 +130,4 @@ class ControladorPasseioTuristicos():
             opcao = self.__tela_passeio_turistico.mostra_tela_opcoes()
             funcao_escolhida = lista_opcoes[opcao]
             funcao_escolhida()
-    
+        

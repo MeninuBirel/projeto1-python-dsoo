@@ -53,3 +53,4 @@ class Pessoa:
 
     def __str__(self):
         return f'Nome: {self.__nome} | Celular: {self.__celular} | Identificacao: {self.__identificacao} | Idade: {self.__idade}'
+

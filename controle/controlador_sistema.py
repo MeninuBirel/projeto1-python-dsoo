@@ -100,3 +100,4 @@ class ControladorSistema:
 
     def cadastra_viagens(self):
         self.__controlador_viagens.abre_tela() 
+

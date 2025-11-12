@@ -75,3 +75,4 @@ class ControladorLocais():
             opcao = self.__tela_local.mostra_tela_opcoes()
             funcao_escolhida = lista_opcoes[opcao]
             funcao_escolhida()
+            

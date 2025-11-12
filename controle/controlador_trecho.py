@@ -97,7 +97,7 @@ class ControladorTrechos():
                 self.__tela_trecho.mostra_mensagem("Alteração cancelada.")
                 return
             #alterar na viagem
-            for viagem in self.controlador_sistema.controlador_viagem.viagens:
+            for viagem in self.controlador_sistema.controlador_viagens.viagens:
                 for tre in viagem.trechos:
                     if tre.data == trecho_a_alterar.data and tre.origem == trecho_a_alterar.origem and tre.destino == trecho_a_alterar.destino and tre.transporte == trecho_a_alterar.transporte and tre.empresa == trecho_a_alterar.empresa and tre.valor_trecho == trecho_a_alterar.valor_trecho:
                         tre.data = novos_dados['data']
@@ -157,4 +157,3 @@ class ControladorTrechos():
             opcao = self.__tela_trecho.mostra_tela_opcoes()
             funcao_escolhida = lista_opcoes[opcao]
             funcao_escolhida()
-    

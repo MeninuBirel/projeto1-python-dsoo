@@ -32,18 +32,34 @@ class ControladorPessoas():
         viagem = self.__tela_pessoa.seleciona_qual_viagem() #adicionar pessoa numa viagem especifica
         dados_pessoa = self.__tela_pessoa.pega_dados_pessoa()
         identificacao = dados_pessoa['identificacao']
-        pessoa = self.find_pessoa_by_identificacao_na_viagem(viagem, identificacao)
-        if pessoa is None:
-            nova_pessoa = Pessoa(dados_pessoa['nome'], dados_pessoa['celular'],
+        nome = dados_pessoa['nome']
+        celular = dados_pessoa['celular']
+        idade = dados_pessoa['idade']
+
+        pessoa_no_sistema = self.find_pessoa_by_identificacao(identificacao)
+        if pessoa_no_sistema:
+            if pessoa_no_sistema.nome == nome and pessoa_no_sistema.celular == celular and pessoa_no_sistema.idade == idade:
+                pessoa = self.find_pessoa_by_identificacao_na_viagem(viagem, identificacao)
+                if pessoa is None:
+                    nova_pessoa = Pessoa(dados_pessoa['nome'], dados_pessoa['celular'],
                                  dados_pessoa['identificacao'], dados_pessoa['idade'])
-            viagem.pessoas.append(nova_pessoa) #adicionar pessoa na viagem especifica
-            self.__tela_pessoa.mostra_mensagem("Pessoa cadastrada com sucesso!")
-            #adicionar no sistema geral
-            if nova_pessoa not in self.__pessoas:
-                self.__pessoas.append(nova_pessoa)
+                    viagem.pessoas.append(nova_pessoa) #adicionar pessoa na viagem especifica
+                    self.__tela_pessoa.mostra_mensagem("Pessoa cadastrada com sucesso!")
+                else:
+                    self.__tela_pessoa.mostra_mensagem("Erro: Essa pessoa já está cadastrada!")
+            else:
+                self.__tela_pessoa.mostra_mensagem("Erro: Essa dentificação já está sendo usada para outro usuário!")
         else:
-            self.__tela_pessoa.mostra_mensagem("Erro: Essa pessoa já está cadastrada!")
+            pessoa = self.find_pessoa_by_identificacao_na_viagem(viagem, identificacao)
+            if pessoa is None:
+                nova_pessoa = Pessoa(dados_pessoa['nome'], dados_pessoa['celular'],
+                                 dados_pessoa['identificacao'], dados_pessoa['idade'])
+                viagem.pessoas.append(nova_pessoa) #adicionar pessoa na viagem especifica
+                self.__tela_pessoa.mostra_mensagem("Pessoa cadastrada com sucesso!")
+                #adicionar no sistema geral
+                self.__pessoas.append(nova_pessoa)
         return None
+        
     
     def excluir_pessoa_da_viagem(self):
         viagem = self.__tela_pessoa.seleciona_qual_viagem()
@@ -74,7 +90,7 @@ class ControladorPessoas():
         if pessoa is not None:
             novos_dados = self.__tela_pessoa.pega_dados_pessoa()
             #alterar nas viagens
-            for viagem in self.controlador_sistema.controlador_viagem.viagens:
+            for viagem in self.controlador_sistema.controlador_viagens.viagens:
                 for pes in viagem.pessoas:
                     if pes.nome == pessoa.nome and pes.celular == pessoa.celular and pes.identificacao == pessoa.identificacao and pes.idade == pessoa.idade:
                         pes.nome = novos_dados['nome']

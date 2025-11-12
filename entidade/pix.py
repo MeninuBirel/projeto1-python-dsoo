@@ -23,4 +23,3 @@ class Pix(Pagamento):
 
     def __str__(self):
         return f"PIX - Valor: R$ {self.valor:.2f} | Pessoa: {self.pessoa.nome} | Data: {self.data} | CPF: {self.cpf}"
-        

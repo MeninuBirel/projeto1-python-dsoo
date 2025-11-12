@@ -35,12 +35,9 @@ class ControladorTransportes():
         self.listar_transportes()
         if not self.__transportes:
             return
-
-        dados_selecao = self.__tela_transporte.seleciona_transporte()
-        if dados_selecao is None:
-            self.__tela_transporte.mostra_mensagem("Exclusão cancelada.")
-            return    
-        transporte_a_remover = self.find_transporte(dados_selecao['tipo'])
+        tipo = self.__tela_transporte.seleciona_transporte()
+ 
+        transporte_a_remover = self.find_transporte(tipo)
         if transporte_a_remover is not None:
             self.__transportes.remove(transporte_a_remover)
             self.__tela_transporte.mostra_mensagem('Transporte removido com sucesso!')
@@ -54,11 +51,8 @@ class ControladorTransportes():
         if not self.__transportes:
             return
 
-        dados_identificacao = self.__tela_transporte.seleciona_transporte()
-        if dados_identificacao is None:
-            self.__tela_transporte.mostra_mensagem("Alteração cancelada.")
-            return
-        transporte_a_alterar = self.find_transporte(dados_identificacao['tipo'])
+        tipo = self.__tela_transporte.seleciona_transporte()
+        transporte_a_alterar = self.find_transporte(tipo)
         if transporte_a_alterar is not None:
             novos_dados = self.__tela_transporte.pega_dados_transporte()
             transporte_a_alterar.tipo = novos_dados['tipo']
@@ -89,4 +83,3 @@ class ControladorTransportes():
             opcao = self.__tela_transporte.mostra_tela_opcoes()
             funcao_escolhida = lista_opcoes[opcao]
             funcao_escolhida()
-    

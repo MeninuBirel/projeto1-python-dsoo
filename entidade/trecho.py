@@ -81,6 +81,4 @@ class Trecho:
             self.__valor_trecho = valor_trecho 
             
     def __str__(self):
-        return f"Trecho - Data: {self.__data} | Origem: {self.__origem} | Destino: {self.__destino} | Transporte: tipo - {self.__transporte}, empresa - {self.__empresa} | Valor: R$ {self.__valor_trecho}"
-        
-        
+        return f"TRECHO - Data: {self.__data} | Origem: {self.__origem.cidade} - {self.__origem.pais} | Destino: {self.__destino.cidade} - {self.__destino.pais}| Transporte - {self.__transporte} - {self.__empresa.nome} | Valor: R$ {self.__valor_trecho:.2f}"

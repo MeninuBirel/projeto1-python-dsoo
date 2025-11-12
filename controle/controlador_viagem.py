@@ -9,7 +9,7 @@ class ControladorViagens():
         self.__viagens = []
         self.__controlador_sistema = controlador_sistema
         self.__controlador_trechos = controlador_sistema.controlador_trechos
-        self.__controlador_passeio_turistico = controlador_sistema.controlador_passeio_turistico
+        self.__controlador_passeio_turisticos = controlador_sistema.controlador_passeio_turisticos
         self.__controlador_pessoas = controlador_sistema.controlador_pessoas
         self.__controlador_pagamentos = controlador_sistema.controlador_pagamentos
     
@@ -57,7 +57,7 @@ class ControladorViagens():
         if viagem is not None:
             novos_dados = self.__tela_viagem.pega_dados_viagem()
             viagem.codigo = novos_dados['codigo']
-            viagem.nome = novos_dados['nome_viagem']
+            viagem.nome_viagem = novos_dados['nome_viagem']
             viagem.data_inc = novos_dados['data_inc']
             viagem.data_fim = novos_dados['data_fim']
             self.listar_viagens()
@@ -79,7 +79,7 @@ class ControladorViagens():
         for trecho in viagem.trechos:
             total_por_pessoa += trecho.valor_trecho
 
-        for passeio in viagem.passeios:
+        for passeio in viagem.passeios_turisticos:
             total_por_pessoa += passeio.valor_passeio
 
         return total_por_pessoa
@@ -206,7 +206,6 @@ class ControladorViagens():
             9: self.verificar_quem_nao_pagou
         }
         while True:
-            opcao = self.__tela_pessoa.mostra_tela_opcoes()
+            opcao = self.__tela_viagem.mostra_tela_opcoes()
             funcao_escolhida = lista_opcoes[opcao]
             funcao_escolhida()
-

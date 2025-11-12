@@ -35,7 +35,7 @@ class TelaPasseioTuristico():
                 print('Valor Incorreto: Digite um valor numérico válido (ex: 10.50).')
     
     def seleciona_qual_viagem(self):
-        controlador_viagem = self.__controlador.controlador_viagem  #como fazer essa parte?????? sem dar tanta moral para a tela
+        controlador_viagem = self.__controlador.controlador_sistema.controlador_viagens  #como fazer essa parte?????? sem dar tanta moral para a tela
         viagens_cadastradas = controlador_viagem.viagens
         print('\n--- Seleção da Viagem ---')
 
@@ -45,7 +45,7 @@ class TelaPasseioTuristico():
 
         opcoes_validas = []
         for i, viagem in enumerate(viagens_cadastradas):
-            print(f"{i + 1} - Código: {viagem.codigo} | Nome: {viagem.nome} | Início: {viagem.data_inc} | Fim: {viagem.data_fim}")
+            print(f"{i + 1} - Código: {viagem.codigo} | Nome: {viagem.nome_viagem} | Início: {viagem.data_inc} | Fim: {viagem.data_fim}")
             opcoes_validas.append(i + 1)
 
         opcoes_validas.append(0)  # Opção para Cancelar
@@ -72,10 +72,8 @@ class TelaPasseioTuristico():
     def pega_dados_passeio(self):
         print('----- Dados Passeio -----')
         dia = input('Dia: ')
-        cidade = input('Cidade: ')
-        cidade.capitalize()
-        atracao_turistica = input('Atração Turística: ')
-        atracao_turistica.capitalize()
+        cidade = input('Cidade: ').capitalize()
+        atracao_turistica = input('Atração Turística: ').capitalize()
         horario_inc = input('Horário Início: ')
         horario_fim = input('horário Fim: ')
         valor_passeio = self.verificar_se_e_float('Valor Passeio: R$ ', minimo=0.0) 
@@ -90,8 +88,7 @@ class TelaPasseioTuristico():
             }
     
     def seleciona_passeio(self):
-        atracao_turistica = input('Atração Turística do passeio que deseja selecionar: ')
-        atracao_turistica.capitalize()
+        atracao_turistica = input('Atração Turística do passeio que deseja selecionar: ').capitalize()
         return atracao_turistica
 
     def mostra_mensagem(self, mensagem):
@@ -99,4 +96,3 @@ class TelaPasseioTuristico():
 
     def mostra_passeios(self, passeio):
         self.mostra_mensagem(str(passeio))
-    

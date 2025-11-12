@@ -27,13 +27,11 @@ class TelaTransporte():
     
     def pega_dados_transporte(self):
         print('----- Dados Transporte -----')
-        tipo = input('Tipo: ')
-        tipo.capitalize()
+        tipo = input('Tipo: ').capitalize()
         return {'tipo': tipo}
 
     def seleciona_transporte(self):
-        tipo = input('Tipo do Transporte: ')
-        tipo.capitalize()
+        tipo = input('Tipo do Transporte: ').capitalize()
         if isinstance(tipo, str):
             return tipo
         else:

@@ -28,7 +28,7 @@ class TelaViagem():
                 print('Número Incorreto: Digite um valor numérico válido - números inteiros.')
     
     def seleciona_qual_viagem(self):
-        controlador_viagem = self.__controlador.controlador_viagem  #como fazer essa parte?????? sem dar tanta moral para a tela
+        controlador_viagem = self.__controlador.controlador_sistema.controlador_viagens  #como fazer essa parte?????? sem dar tanta moral para a tela
         viagens_cadastradas = controlador_viagem.viagens
         print('\n--- Seleção da Viagem ---')
 
@@ -38,7 +38,7 @@ class TelaViagem():
 
         opcoes_validas = []
         for i, viagem in enumerate(viagens_cadastradas):
-            print(f"{i + 1} - Código: {viagem.codigo} | Nome: {viagem.nome} | Início: {viagem.data_inc} | Fim: {viagem.data_fim}")
+            print(f"{i + 1} - Código: {viagem.codigo} | Nome: {viagem.nome_viagem} | Início: {viagem.data_inc} | Fim: {viagem.data_fim}")
             opcoes_validas.append(i + 1)
 
         opcoes_validas.append(0)  # Opção para Cancelar
@@ -70,8 +70,7 @@ class TelaViagem():
     def pega_dados_viagem(self):
         print('----- Dados Viagem -----')
         codigo = self.verificar_se_e_inteiro('Código: ', minimo=0)
-        nome_viagem = input('Nome da Viagem: ')
-        nome_viagem.capitalize()
+        nome_viagem = input('Nome da Viagem: ').capitalize()
         data_inc = input('Data de Início: ')
         data_fim = input('Data Fim: ')
         if isinstance(codigo, int) and isinstance(nome_viagem, str) and isinstance(data_inc, str) and isinstance(data_fim, str):

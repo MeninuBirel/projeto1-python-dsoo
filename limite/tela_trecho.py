@@ -41,7 +41,7 @@ class TelaTrecho():
                 print('Valor Incorreto: Digite um valor numérico válido (ex: 10.50).')
     
     def seleciona_qual_viagem(self):
-        controlador_viagem = self.__controlador.controlador_viagem  #como fazer essa parte?????? sem dar tanta moral para a tela
+        controlador_viagem = self.__controlador.controlador_sistema.controlador_viagens  #como fazer essa parte?????? sem dar tanta moral para a tela
         viagens_cadastradas = controlador_viagem.viagens
         print('\n--- Seleção da Viagem ---')
 
@@ -51,7 +51,7 @@ class TelaTrecho():
 
         opcoes_validas = []
         for i, viagem in enumerate(viagens_cadastradas):
-            print(f"{i + 1} - Código: {viagem.codigo} | Nome: {viagem.nome} | Início: {viagem.data_inc} | Fim: {viagem.data_fim}")
+            print(f"{i + 1} - Código: {viagem.codigo} | Nome: {viagem.nome_viagem} | Início: {viagem.data_inc} | Fim: {viagem.data_fim}")
             opcoes_validas.append(i + 1)
 
         opcoes_validas.append(0)  # Opção para Cancelar
@@ -76,7 +76,7 @@ class TelaTrecho():
         return opcao
     
     def seleciona_transporte(self):
-        controlador_transportes = self.__controlador.controlador_transportes
+        controlador_transportes = self.__controlador.controlador_sistema.controlador_transportes
         transportes_cadastrados = controlador_transportes.transportes
         print('\n--- Seleção de Transporte ---')
 
@@ -101,7 +101,7 @@ class TelaTrecho():
             return transportes_cadastrados[escolha - 1]
         
     def seleciona_empresa(self):
-        controlador_empresa = self.__controlador.controlador_empresas
+        controlador_empresa = self.__controlador.controlador_sistema.controlador_empresas
         empresas_cadastradas = controlador_empresa.empresas
         print('\n--- Seleção de Empresa ---')
 
@@ -126,7 +126,7 @@ class TelaTrecho():
             return empresas_cadastradas[escolha - 1]
     
     def seleciona_local(self):
-        controlador_locais = self.__controlador.controlador_locais
+        controlador_locais = self.__controlador.controlador_sistema.controlador_locais
         locais_cadastrados = controlador_locais.locais
 
         if not locais_cadastrados:
@@ -182,3 +182,4 @@ class TelaTrecho():
 
     def mostra_mensagem(self, mensagem):
         print(mensagem)
+
